@@ -4,10 +4,7 @@ import {
   findAllTuits,
   findTuitById,
 } from "../services/tuits-service";
-import {
-  createUser,
-  deleteUsersByUsername,
-} from "../services/users-service";
+import { createUser, deleteUsersByUsername } from "../services/users-service";
 
 describe("can create tuit with REST API", () => {
   // sample tuit to insert
@@ -72,7 +69,7 @@ describe("can delete tuit wtih REST API", () => {
     return deleteUsersByUsername(ripley.username);
   });
 
-  test("can create tuit with REST API", async () => {
+  test("can delete tuit wtih REST API", async () => {
     const data = await createUser(ripley);
     tuit.postedBy = data._id;
     // insert new user in the database
@@ -107,7 +104,7 @@ describe("can retrieve a tuit by their primary key with REST API", () => {
     return deleteUsersByUsername(ripley.username);
   });
 
-  test("can create tuit with REST API", async () => {
+  test("can retrieve a tuit by their primary key with REST API", async () => {
     const data = await createUser(ripley);
     tuit.postedBy = data._id;
     // insert new user in the database
@@ -153,7 +150,7 @@ describe("can retrieve all tuits with REST API", () => {
     return deleteUsersByUsername(ripley.username);
   });
 
-  test("can create tuit with REST API", async () => {
+  test("can retrieve all tuits with REST API", async () => {
     const tuitData = await findAllTuits();
     expect(tuitData.length).toBeGreaterThanOrEqual(1);
 
