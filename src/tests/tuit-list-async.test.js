@@ -1,7 +1,10 @@
 import { screen, render } from "@testing-library/react";
 import { HashRouter } from "react-router-dom";
 import { findAllTuits } from "../services/tuits-service";
+import axios from "axios";
 import Tuit from "../components/tuits/tuit";
+
+jest.mock("axios");
 
 const MOCKED_TUITS = [
   {
@@ -21,20 +24,13 @@ const MOCKED_TUITS = [
   },
 ];
 
-test("tuit list renders static tuit array", () => {
-  render(
-    <HashRouter>
-      {MOCKED_TUITS.map((tuit) => (
-        <Tuit tuit={tuit} />
-      ))}
-    </HashRouter>
+test("tuit list renders mocked", async () => {
+  axios.get.mockImplementation(() =>
+    Promise.resolve({ data: { tuits: MOCKED_TUITS } })
   );
-  const linkElement = screen.getByText(/alice's tuit/i);
-  expect(linkElement).toBeInTheDocument();
-});
+  const response = await findAllTuits();
+  const tuits = response.tuits;
 
-test("tuit list renders async", async () => {
-  const tuits = await findAllTuits();
   render(
     <HashRouter>
       {tuits.map((tuit) => (
@@ -42,6 +38,6 @@ test("tuit list renders async", async () => {
       ))}
     </HashRouter>
   );
-  const tuit = screen.getByText(/@TESTTSTS Dragon spacecraft/i);
-  expect(tuit).toBeInTheDocument();
+  const linkElement = screen.getByText(/alice's tuit/i);
+  expect(linkElement).toBeInTheDocument();
 });
