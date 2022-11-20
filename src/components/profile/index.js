@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import * as service from "../../services/auth-service";
+import MyDislikes from "./my-dislikes";
 import MyLikes from "./my-likes";
 import MyTuits from "./my-tuits";
 
@@ -39,6 +40,7 @@ const Profile = () => {
         <Route path="/media"
                element={<Media/>}/> */}
         <Route path="/mylikes" element={<MyLikes />} />
+        <Route path="/mylikes" element={<MyDislikes />} />
       </Routes>
     </div>
   );
