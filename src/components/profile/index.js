@@ -24,7 +24,22 @@ const Profile = () => {
       <h6>@{profile.username}</h6>
       <button onClick={logout}>Logout</button>
       <br />
-      
+      <Link to="/profile/mytuits">Tuits</Link>
+      <br />
+      <Link to="/profile/tuits-and-replies">Tuits & replies</Link>
+      <br />
+      <Link to="/profile/media">Media</Link>
+      <br />
+      <Link to="/profile/mylikes">Likes</Link>
+      <br />
+      <Routes>
+        <Route path="/mytuits" element={<MyTuits />} />
+        {/* <Route path="/tuits-and-replies"
+               element={<TuitsAndReplies/>}/>
+        <Route path="/media"
+               element={<Media/>}/> */}
+        <Route path="/mylikes" element={<MyLikes />} />
+      </Routes>
     </div>
   );
 };
