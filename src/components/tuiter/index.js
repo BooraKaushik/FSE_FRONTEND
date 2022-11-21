@@ -1,7 +1,7 @@
 import React from "react";
 import Navigation from "../navigation";
 import WhatsHappening from "../whats-happening";
-import { BrowserRouter, Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import Home from "../home";
 import Bookmarks from "../bookmarks";
 import Profile from "../profile";
@@ -16,7 +16,6 @@ import { Login } from "../profile/login";
 import Movies from "../movies";
 import MovieDetails from "../movies/details";
 import Signup from "../profile/signup";
-import MyTuits from "../profile/my-tuits";
 
 function Tuiter() {
   return (

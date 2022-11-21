@@ -5,7 +5,6 @@ import {
   getDislikeCount,
   getLikeCount,
   unLike,
-  userTogglesTuitLikes,
 } from "../services/likes-service";
 import { createTuit, deleteTuit } from "../services/tuits-service";
 

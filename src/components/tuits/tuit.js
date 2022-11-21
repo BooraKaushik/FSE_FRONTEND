@@ -11,6 +11,7 @@ const Tuit = ({ tuit, deleteTuit, likeTuit }) => {
           <img
             src={`../images/${tuit.postedBy.username}.jpg`}
             className="ttr-tuit-avatar-logo rounded-circle"
+            alt="ranss"
           />
         )}
       </div>

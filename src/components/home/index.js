@@ -2,10 +2,9 @@ import React from "react";
 import Tuits from "../tuits";
 import * as service from "../../services/tuits-service";
 import { useEffect, useState } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const Home = () => {
-  const location = useLocation();
   const { uid } = useParams();
   const [tuits, setTuits] = useState([]);
   const [tuit, setTuit] = useState("");
@@ -18,11 +17,8 @@ const Home = () => {
     }
   };
   useEffect(() => {
-    let isMounted = true;
     findTuits();
-    return () => {
-      isMounted = false;
-    };
+    // eslint-disable-next-line
   }, []);
   const createTuit = () => service.createTuit(userId, { tuit }).then(findTuits);
   const deleteTuit = (tid) => service.deleteTuit(tid).then(findTuits);
@@ -36,6 +32,7 @@ const Home = () => {
               <img
                 className="ttr-width-50px rounded-circle"
                 src="../images/nasa-logo.jpg"
+                alt="rans"
               />
             </div>
             <div className="p-2 w-100">

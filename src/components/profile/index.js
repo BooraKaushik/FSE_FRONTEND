@@ -17,6 +17,7 @@ const Profile = () => {
     } catch (e) {
       navigate("/login");
     }
+    // eslint-disable-next-line 
   }, []);
   const logout = () => {
     service.logout().then(() => navigate("/login"));
