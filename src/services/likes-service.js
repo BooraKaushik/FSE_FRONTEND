@@ -12,16 +12,17 @@ export const userTogglesTuitLikes = (uid, tid) =>
   api.put(`${USERS_API}/${uid}/likes/${tid}`).then((response) => response.data);
 
 export const getLikeCount = (tid) =>
-  api.get(`${LIKES_API}/likecount/${tid}`).then((response) => response.data);
+  api.get(`${LIKES_API}/likecount/${tid}`).then((response) => {
+    return response.data;
+  });
 
 export const getDislikeCount = (tid) =>
   api.get(`${LIKES_API}/dislikecount/${tid}`).then((response) => response.data);
-  
 
 export const createLike = (uid, tid) =>
-api
-  .post(`${USERS_API}/${uid}/likes/${tid}`)
-  .then((response) => response.data);
+  api
+    .post(`${USERS_API}/${uid}/likes/${tid}`)
+    .then((response) => response.data);
 
 export const createDislike = (uid, tid) =>
   api
@@ -30,3 +31,8 @@ export const createDislike = (uid, tid) =>
 
 export const findAllTuitsLikedByUser = (userId) =>
   api.get(`${USERS_API}/${userId}/likes`).then((response) => response.data);
+
+export const unLike = (uid, tid) =>
+  api
+    .delete(`${USERS_API}/${uid}/unlikes/${tid}`)
+    .then((response) => response.data);
