@@ -7,6 +7,8 @@ import MyTuits from "./my-tuits";
 const Profile = () => {
   const navigate = useNavigate();
   const [profile, setProfile] = useState({});
+
+  // eslint-disable-next-line
   useEffect(async () => {
     try {
       const user = await service.profile();

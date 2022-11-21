@@ -61,7 +61,7 @@ const TuitStats = ({ tuit, likeTuit }) => {
           {tuit.stats && tuit.stats.likes}
         </span>
       </div>
-      <div className="col">
+      {/* <div className="col">
         <span
           onClick={() => {
             createLikefun(tuit._id);
@@ -75,7 +75,7 @@ const TuitStats = ({ tuit, likeTuit }) => {
           )}
           {likes}
         </span>
-      </div>
+      </div> */}
       <div className="col">
         <span onClick={() => createDislikefun(tuit._id)}>
           {dislikes > 0 && (
