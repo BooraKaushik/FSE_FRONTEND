@@ -1,9 +1,11 @@
 import {
   createDislike,
   createLike,
+  findAllTuitsLikedByUser,
   getDislikeCount,
   getLikeCount,
   unLike,
+  userTogglesTuitLikes,
 } from "../services/likes-service";
 import { createTuit, deleteTuit } from "../services/tuits-service";
 
@@ -66,5 +68,22 @@ describe("Create Disike", () => {
     expect(data.likedBy).toEqual("6378dc2ba055f5cd7f71b054");
     expect(data.tuit).toEqual(tuit._id);
     expect(data.liked).toEqual(false);
+  });
+});
+
+describe("Find all tuits a user liked", () => {
+  // sample dislike
+  test("Find all tuits a user liked", async () => {
+    const tuit = await createTuit("6378dc2ba055f5cd7f71b054", {
+      tuit: "@TESTTSTS Dragon spacecraft returns to Earth with @ISS_Research that could help us better understand neurodegenerative diseases, gene expression, & muscle atrophy. Undocking from the @Space_Station is at 9:05am ET (13:05 UT). Watch:",
+      postedOn: "Dec 25, 2021",
+      postedBy: "6378dc2ba055f5cd7f71b054",
+    });
+    const dataPrev = await findAllTuitsLikedByUser("6378dc2ba055f5cd7f71b054");
+    await createLike("6378dc2ba055f5cd7f71b054", tuit._id);
+    const data = await findAllTuitsLikedByUser("6378dc2ba055f5cd7f71b054");
+    await unLike("6378dc2ba055f5cd7f71b054", tuit._id);
+    await deleteTuit(tuit._id);
+    expect(data).toEqual(dataPrev + 1);
   });
 });
