@@ -46,7 +46,7 @@ const TuitStats = ({ tuit, likeTuit }) => {
         <i className="far fa-retweet me-1"></i>
         {tuit.stats && tuit.stats.retuits}
       </div>
-      <div className="col">
+      {/* <div className="col">
         <span
           onClick={async () => {
             await likeTuit(tuit);
@@ -60,8 +60,8 @@ const TuitStats = ({ tuit, likeTuit }) => {
           {tuit.stats.likes <= 0 && <i className="far fa-heart"></i>}
           {tuit.stats && tuit.stats.likes}
         </span>
-      </div>
-      {/* <div className="col">
+      </div> */}
+      <div className="col">
         <span
           onClick={() => {
             createLikefun(tuit._id);
@@ -75,7 +75,7 @@ const TuitStats = ({ tuit, likeTuit }) => {
           )}
           {likes}
         </span>
-      </div> */}
+      </div>
       <div className="col">
         <span onClick={() => createDislikefun(tuit._id)}>
           {dislikes > 0 && (
