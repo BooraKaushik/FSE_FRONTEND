@@ -51,13 +51,13 @@ const Home = () => {
                   <i className="far fa-map-location me-3"></i>
                 </div>
                 <div className="col-2">
-                  <a
+                  <div
                     onClick={createTuit}
                     className={`btn btn-primary rounded-pill fa-pull-right
                                   fw-bold ps-4 pe-4`}
                   >
                     Tuit
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
